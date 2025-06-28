@@ -5,7 +5,9 @@ These files are from the tutorial: 🔌 Installing and configuring NUT (Network 
 which can be found on the following 3 protocols
 
 https://sava.rocks/blog/installing-and-configuring-nut-network-ups-tools-for-your-home-lab/
+
 gemini://sava.rocks/blog/installing-and-configuring-nut-network-ups-tools-for-your-home-lab/
+
 gopher://sava.rocks/blog/installing-and-configuring-nut-network-ups-tools-for-your-home-lab/
 
 The files in the folder server are meant to be on the connected device via USB cable to the UPS
