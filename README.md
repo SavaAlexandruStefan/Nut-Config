@@ -1,1 +1,1 @@
-# nut-config
+# NUT - Network UPS Tools setup for multiple computers/servers
