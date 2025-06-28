@@ -1,0 +1,30 @@
+#!/bin/sh
+
+case $1 in
+    shutdown_timer)
+        logger -t upssched-cmd "UPS is on battery. Shutting down in 2 minutes if power is not restored!"
+        /sbin/upsmon -c fsd
+        ;;
+
+    critical_shutdown)
+        logger -t upssched-cmd "Triggering shutdown in 20 seconds because battery is critical!"
+        /sbin/upsmon -c fsd
+        ;;
+
+    commbad_timer)
+        logger -t upssched-cmd "UPS communication failure persists, initiating shutdown"
+        /usr/sbin/upsmon -c fsd
+        ;;
+    commbad_shutdown)
+        logger -t upssched-cmd "UPS communication failed! Shutting down to be safe!"
+        /sbin/upsmon -c fsd
+        ;;
+
+    powerdown)
+        logger -t upssched-cmd "Executing powerdown command"
+        ;;
+
+    *)
+        logger -t upssched-cmd "Unrecognized command: $1"
+        ;;
+esac
