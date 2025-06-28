@@ -1,0 +1,10 @@
+[admin]
+        password = securepass
+        actions = SET FSD
+        instcmds = ALL
+        upsmon master
+[monitor]
+        password = securepass
+        upsmon slave
+# First user - admin - can issue commands to the UPS
+# Seconds user - monitor - can only read data from the UPS
