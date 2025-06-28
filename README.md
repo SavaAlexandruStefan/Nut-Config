@@ -1,14 +1,14 @@
 # NUT - Network UPS Tools setup for multiple computers/servers
 
-These files are from the tutorial: 🔌 Installing and configuring NUT (Network UPS Tools) for your home lab
+These files are from the tutorial: 🔌 **Installing and configuring NUT (Network UPS Tools) for your home lab**
 
-which can be found on the following 3 protocols
+which can be found on the following 3 protocols of Sava.Rocks
 
-https://sava.rocks/blog/installing-and-configuring-nut-network-ups-tools-for-your-home-lab/
+[https://sava.rocks/blog/installing-and-configuring-nut-network-ups-tools-for-your-home-lab/](https://sava.rocks/blog/installing-and-configuring-nut-network-ups-tools-for-your-home-lab/)
 
-gemini://sava.rocks/blog/installing-and-configuring-nut-network-ups-tools-for-your-home-lab/
+[gemini://sava.rocks/blog/installing-and-configuring-nut-network-ups-tools-for-your-home-lab/](gemini://sava.rocks/blog/installing-and-configuring-nut-network-ups-tools-for-your-home-lab/)
 
-gopher://sava.rocks/blog/installing-and-configuring-nut-network-ups-tools-for-your-home-lab/
+[gopher://sava.rocks/blog/installing-and-configuring-nut-network-ups-tools-for-your-home-lab/](gopher://sava.rocks/blog/installing-and-configuring-nut-network-ups-tools-for-your-home-lab/)
 
-The files in the folder server are meant to be on the connected device via USB cable to the UPS
-The files in the folder client are meant to be on all other connected devices to the same network that will query the server for the UPS status and also get notified of changes.
+The files in the folder **server** are meant to be on the connected device via USB cable to the UPS
+The files in the folder **client** are meant to be on all other connected devices to the same network that will query the server for the UPS status and also get notified of changes.
