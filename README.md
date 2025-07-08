@@ -4,7 +4,7 @@ These files are from the tutorial:
 
 [🔌 **Installing and configuring NUT (Network UPS Tools) for your home lab**](https://sava.rocks/blog/installing-and-configuring-nut-network-ups-tools-for-your-home-lab/) and [**Use Gotify with NUT Server**](https://sava.rocks/blog/use-gotify-with-nut-server/)
 
-which can be found on the following 3 protocols of Sava.Rocks which are **https://, gemini:// and gopher://** : 
+which can be found on the following 3 protocols of Sava.Rocks which are **https://**, **gemini://** and **gopher://** : 
 
 [https://sava.rocks/](https://sava.rocks/)
 
