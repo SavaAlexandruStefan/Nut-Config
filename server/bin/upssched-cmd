@@ -1,0 +1,39 @@
+#!/bin/sh
+
+case $1 in
+    onbatt)
+        logger -t upssched-cmd "UPS running on battery. Battery is now discharging."
+        ;;
+
+    onpower)
+        logger -t upssched-cmd "UPS running on mains. Battery is now charging."
+        ;;
+
+    mute_beeper)
+        upscmd -u admin -p securepass apc@server.ip.address beeper.mute
+        logger -t upssched-cmd "1 minute limit exceeded, muting beeper"
+        ;;
+
+    commbad_timer)
+        logger -t upssched-cmd "UPS communication failure persists, initiating shutdown"
+        /usr/sbin/upsmon -c fsd
+        ;;
+
+    commbad_shutdown)
+        logger -t upssched-cmd "UPS communication failed! Shutting down!"
+        /sbin/upsmon -c fsd
+        ;;
+
+    critical_shutdown)
+        logger -t upssched-cmd "UPS battery is almost empty. Shutting down"
+        /sbin/upsmon -c fsd
+        ;;
+
+    powerdown)
+        logger -t upssched-cmd "Executing powerdown command"
+        ;;
+
+    *)
+        logger -t upssched-cmd "Unrecognized command: $1"
+        ;;
+esac

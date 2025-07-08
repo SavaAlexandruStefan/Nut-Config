@@ -1,0 +1,44 @@
+#!/bin/sh
+CURL="/usr/bin/curl --retry 3 --retry-delay 5 --retry-max-time 20"
+GOTIFY_URL='https://your.gotify.url/message?token=<apptoken>'
+HOSTNAME="$(hostname)"
+send_gotify() {
+    if [ -n "$title" ] && [ -n "$message" ]; then
+        $CURL -fsS -F "title=$title" -F "message=$message" "$GOTIFY_URL"
+    fi
+}
+case $1 in
+    shutdown_timer)
+        logger -t upssched-cmd "UPS is on battery. Shutting down in 2 minutes if power is not restored!"
+        title="$HOSTNAME - UPS on Battery"
+        message="Shutting down in 2 minutes if power is not restored!"
+        /sbin/upsmon -c fsd
+        ;;
+    critical_shutdown)
+        logger -t upssched-cmd "Triggering shutdown in 20 seconds because battery is critical!"
+        title="$HOSTNAME - Critical Battery"
+        message="Triggering shutdown in 20 seconds due to critical battery!"
+        /sbin/upsmon -c fsd
+        ;;
+    commbad_timer)
+        logger -t upssched-cmd "UPS communication failure persists, initiating shutdown"
+        title="$HOSTNAME - UPS Communication Failure"
+        message="Lost connection to UPS. Shutting down in 60 seconds!"
+        /usr/sbin/upsmon -c fsd
+        ;;
+    commbad_shutdown)
+        logger -t upssched-cmd "UPS communication failed! Shutting down to be safe!"
+        title="$HOSTNAME - UPS Communication Failure"
+        message="UPS communication failed for 60 seconds. Shutting down!"
+        /sbin/upsmon -c fsd
+        ;;
+    powerdown)
+        logger -t upssched-cmd "Executing powerdown command"
+        title="$HOSTNAME - Powerdown"
+        message="System is now powering down."
+        ;;
+    *)
+        logger -t upssched-cmd "Unrecognized command: $1"
+        ;;
+esac
+send_gotify
